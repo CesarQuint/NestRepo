@@ -7,6 +7,7 @@ import {
   Param,
   Delete,
   Res,
+  ParseIntPipe,
 } from '@nestjs/common';
 import { CoffeeService } from './coffee.service';
 import { CreateCoffeeDto } from './dto/create-coffee.dto';
@@ -30,6 +31,13 @@ export class CoffeeController {
   findOne(@Param('id') id: string) {
     return this.coffeeService.findOne(+id);
   }
+
+  //! This verify that the parameter is a specific type of value
+
+  // @Get(':id')
+  // findOne(@Param('id', ParseIntPipe) id: number) {
+  //   return this.coffeeService.findOne(id);
+  // }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateCoffeeDto: UpdateCoffeeDto) {

@@ -1,3 +1,5 @@
+import { IsString } from 'class-validator';
+
 enum sizes {
   'small',
   'medium',
@@ -5,7 +7,9 @@ enum sizes {
 }
 
 export class CreateCoffeeDto {
+  @IsString()
   name: string;
   size: sizes;
+  @IsString()
   coffe_type: string;
 }
