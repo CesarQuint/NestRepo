@@ -8,7 +8,11 @@ import { CoffeeModule } from './coffee/coffee.module';
 
 @Module({
   imports: [
-    ConfigModule.forRoot({ isGlobal: true, envFilePath: '../../.example.env' }),
+    ConfigModule.forRoot({
+      isGlobal: true,
+      cache: true,
+      envFilePath: '.example.env',
+    }),
     CoffeeModule,
   ],
   controllers: [AppController],
