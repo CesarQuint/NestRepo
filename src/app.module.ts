@@ -14,6 +14,8 @@ import { CoffeeModule } from './coffee/coffee.module';
       envFilePath: '.example.env',
     }),
     CoffeeModule,
+    //* Properties limited
+    // ConfigModule.forFeature(databaseConfig)
   ],
   controllers: [AppController],
   providers: [AppService],
