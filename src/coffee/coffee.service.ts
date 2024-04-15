@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { CreateCoffeeDto } from './dto/create-coffee.dto';
 import { UpdateCoffeeDto } from './dto/update-coffee.dto';
 import { InjectModel } from '@nestjs/mongoose';
@@ -9,8 +9,17 @@ import { Model } from 'mongoose';
 export class CoffeeService {
   constructor(@InjectModel(Coffee.name) private coffeeModel: Model<Coffee>) {}
 
-  create(createCoffeeDto: CreateCoffeeDto) {
-    return 'This action adds a new coffee';
+  async create(createCoffeeDto: CreateCoffeeDto) {
+    try {
+      const newCofee = new this.coffeeModel(createCoffeeDto);
+
+      return await newCofee.save();
+    } catch (error) {
+      throw new BadRequestException('Error', {
+        cause: error,
+        description: 'idk',
+      });
+    }
   }
 
   findAll() {
