@@ -18,9 +18,7 @@ import { MongooseModule } from '@nestjs/mongoose';
     CoffeeModule,
     //* Properties limited
     // ConfigModule.forFeature(databaseConfig)
-    MongooseModule.forRoot(
-      `mongodb+srv://root:${process.env.MONGO}@cluster0.oomkfim.mongodb.net/coffee`,
-    ),
+    MongooseModule.forRoot(process.env.MONGO),
   ],
   controllers: [AppController],
   providers: [AppService],
