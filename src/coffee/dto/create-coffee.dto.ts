@@ -1,9 +1,9 @@
 import { IsString, IsEnum } from 'class-validator';
 
-enum sizes {
-  'small',
-  'medium',
-  'large',
+export enum sizes {
+  'small' = 'small',
+  'medium' = 'medium',
+  'large' = 'large',
 }
 
 export class CreateCoffeeDto {
