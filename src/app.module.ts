@@ -6,16 +6,21 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { CoffeeModule } from './coffee/coffee.module';
 
+import { MongooseModule } from '@nestjs/mongoose';
+
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
       cache: true,
-      envFilePath: '.example.env',
+      envFilePath: '.env',
     }),
     CoffeeModule,
     //* Properties limited
     // ConfigModule.forFeature(databaseConfig)
+    MongooseModule.forRoot(
+      `mongodb+srv://root:${process.env.MONGO}@cluster0.oomkfim.mongodb.net/coffee`,
+    ),
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -1,9 +1,14 @@
 import { Injectable } from '@nestjs/common';
 import { CreateCoffeeDto } from './dto/create-coffee.dto';
 import { UpdateCoffeeDto } from './dto/update-coffee.dto';
+import { InjectModel } from '@nestjs/mongoose';
+import { Coffee } from './schemas/coffee.schema';
+import { Model } from 'mongoose';
 
 @Injectable()
 export class CoffeeService {
+  constructor(@InjectModel(Coffee.name) private coffeeModel: Model<Coffee>) {}
+
   create(createCoffeeDto: CreateCoffeeDto) {
     return 'This action adds a new coffee';
   }
